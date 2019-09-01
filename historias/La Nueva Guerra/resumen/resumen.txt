@@ -1,0 +1,18 @@
+Estamos ante el primer arma de la ciberguerra, STUXNET. 
+Fue un gusano informático encargado de mermar las capacidades de de uranio de Irán en la central nuclear de Natanz.
+
+Esta central nuclear usaba centrifugadoras para el enriquecimiento de uranio. Estas centrifugadoras fueron desarrolladas en la década de los 60 por países Europeos y sus planos fueron vendidos por traficantes a Irán en la década de los 80.
+Debido a la complejidad del sistema y a no haber sido desarrollada por los Iraníes, producía que las centrifugadoras se rompieran muy a menudo por lo que desarrollaron un conjunto de válvulas que liberarían la presión en caso de que fuera necesario para mejorar el rendimiento y reducir el numero de piezas que debían ser sustituidas en caso de fallo.
+
+Este sistema de control de válvulas y sensores de presión estaban controlados por el controlador industrial Siemens S7-417 que seria el objetivo principal de Stuxnet.
+Stuxnet se presentaba como un archivo de configuración para el software creado por Siemens y según se cree fue introducido a través de un USB por un grupo de contrabandistas que suministraban piezas a la central.
+
+Una vez introducido Stuxnet en el sistema, este se encargaba de grabar la lectura de los sensores durante un tiempo y reproducirlo en bucle. Provocando que la válvula encargadas de liberar la presión no detectaran los picos anómalos y no liberaran la presión. Esto producía que más centrifugadoras se rompieran produciendo un mayor retraso en el enriquecimiento de plutonio.
+
+¿Pero como lo lograba Stuxnet?
+Stuxnet creaba dos procesos lsass ilegítimos ejecutados por el proceso services.exe. Los creadores del malware habían conseguido que estos procesos estuvieran firmados por una entidad confiable por lo que a primera vista parecían legítimos. Estos dos procesos realmente contenían dll y drivers ocultos  encargados de realizar procesos de grabación y escritura de los sensores. 
+Adicionalmente habia conseguido persistencia en el sistema, modificando las claves de registro, creando un servicio MrxNet que contenía la inicialización del driver mrxnet.syx que el mismo había inyectado.
+
+De esta forma una vez que el sistema era reiniciado, Stuxnet volvía a la vida.
+
+Posteriorme existieron versiones mejoradas de Stuxnet que tenían la capacidad de ser controladas de manera remota y de auto propagarse dentro de una red privada.
